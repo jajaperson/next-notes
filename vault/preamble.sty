@@ -31,23 +31,24 @@
 \DeclareMathOperator{\End}{End}
 
 %% Categories
-\newcommand{\Set}{\cat{Set}}
-\newcommand{\Grp}{\cat{Grp}}
-\newcommand{\Grpd}{\cat{Grpd}}
-\newcommand{\Cat}{\cat{Cat}}
-\newcommand{\Ab}{\cat{Ab}}
-\newcommand{\Hask}{\cat{Hask}}
-\newcommand{\Vect}{\cat{Vect}}
-\newcommand{\Top}{\cat{Top}}
-\newcommand{\hTop}{\cat{hTop}}
-\newcommand{\Rep}{\cat{Rep}}
-\newcommand{\Nat}{\cat{Nat}}
-\newcommand{\Man}{\cat{Man}}
-\newcommand{\Cov}{\cat{Cov}}
-\newcommand{\Mod}{\cat{Mod}}
-\newcommand{\lMod}[1]{\leftindex #1 \Mod}
+\DeclareMathOperator{\Set}{\cat{Set}}
+\DeclareMathOperator{\Grp}{\cat{Grp}}
+\DeclareMathOperator{\Grpd}{\cat{Grpd}}
+\DeclareMathOperator{\Cat}{\cat{Cat}}
+\DeclareMathOperator{\Ab}{\cat{Ab}}
+\DeclareMathOperator{\Hask}{\cat{Hask}}
+\DeclareMathOperator{\Vect}{\cat{Vect}}
+\DeclareMathOperator{\Top}{\cat{Top}}
+\DeclareMathOperator{\hTop}{\cat{hTop}}
+\DeclareMathOperator{\Rep}{\cat{Rep}}
+\DeclareMathOperator{\Nat}{\cat{Nat}}
+\DeclareMathOperator{\Man}{\cat{Man}}
+\DeclareMathOperator{\Cov}{\cat{Cov}}
+\DeclareMathOperator{\Mod}{\cat{Mod}}
+\newcommand{\lMod}[1]{\operatorname{\leftindex #1 {\cat{Mod}}}}
 \newcommand{\rMod}[1]{\Mod_#1}
 \newcommand{\bMod}[2]{\leftindex #1 {\Mod_#2}}
+\DeclareMathOperator{\Ring}{\cat{Ring}}
 
 % Topology
 \DeclareMathOperator{\Int}{Int}
@@ -68,10 +69,12 @@
 \DeclareMathOperator{\diag}{diag}
 
 \DeclareMathOperator{\Tr}{tr}
+\DeclareMathOperator{\Spec}{Spec}
 
 %% Representation and Lie theory
 \DeclareMathOperator{\Ad}{Ad}
 \DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Ind}{Ind}
 
 %% Vector shortcuts
 \newcommand{\vtwo}[2]{
@@ -91,6 +94,10 @@
 % Group theory
 \DeclareMathOperator{\Inn}{Inn}
 \DeclareMathOperator{\Out}{Out}
+\DeclareMathOperator{\Cent}{Cent}
+
+% Ring theorey
+\DeclareMathOperator{\Frac}{Frac}
 
 % Calculus
 \newcommand{\jacob}{\mathbf{J}}
@@ -112,8 +119,10 @@
 \DeclareMathOperator{\im}{im}
 
 % Probability
-\DeclareMathOperator{\Ex}{E}
+\DeclareMathOperator{\Ex}{\mathbb{E}}
 \DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Covar}{Cov}
+\DeclareMathOperator{\Corr}{Corr}
 
 %% Distributions
 \DeclareMathOperator{\Bern}{Bern}
@@ -141,3 +150,6 @@
 % Geometry
 \newcommand{\I}{\mathbin{\mathrm{I}}}
 \newcommand{\notI}{\mathbin{\not{\mathrm{I}}}}
+
+% Set theory
+\DeclareMathOperator{\shood}{Set}
