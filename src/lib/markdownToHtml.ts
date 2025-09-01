@@ -4,7 +4,7 @@ import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
 import remarkWikilinks from "remark-wikilinks";
-import remarkCallouts from "remark-callouts";
+import remarkCallouts from "@r4ai/remark-callout";
 import remarkMath from "remark-math";
 import rehypeMathjax from "rehype-mathjax/chtml";
 
