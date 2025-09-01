@@ -1,8 +1,9 @@
 import fs from "fs";
 import matter from "gray-matter";
 import * as path from "path";
+import { VAULT_DIR } from "./constants";
 
-const vaultDirectory = path.join(process.cwd(), process.env.VAULT_DIR || "");
+const vaultDirectory = path.join(process.cwd(), VAULT_DIR);
 
 /** Collects the slugs  matching a given pattern. */
 export function* getVaultSlugs(pattern?: RegExp): IterableIterator<string[]> {
