@@ -1,3 +1,8 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @import "./markdown.css";
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-ling: var(--font-charis);
+}
