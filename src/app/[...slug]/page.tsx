@@ -20,7 +20,7 @@ export default async function NotePage({
 
 type Params = {
   params: Promise<{
-    slug: string;
+    slug: string[];
   }>;
 };
 
