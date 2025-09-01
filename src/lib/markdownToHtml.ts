@@ -12,7 +12,17 @@ export async function markdownToHtml(markdown: string): Promise<string> {
   const file = await unified()
     .use(remarkParse)
     .use(remarkGfm)
-    .use(remarkWikilinks, {})
+    .use(remarkWikilinks, {
+      pageResolver: (pageName) => ({
+        slug: pageName,
+        exists: true,
+      }
+      ),
+      hrefTemplate: (slug, segment) => {
+        if (segment.length > 0) return `/notes/${slug}#${segment}`;
+        return `/notes/${slug}`;
+      }
+    })
     .use(remarkCallouts)
     .use(remarkMath)
     .use(remarkRehype, { allowDangerousHtml: true })
@@ -26,3 +36,4 @@ export async function markdownToHtml(markdown: string): Promise<string> {
 
   return file.toString()
 }
+

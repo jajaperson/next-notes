@@ -1,6 +1,3 @@
-import markdownStyles from "./markdown-styles.module.css";
-import "remark-callouts/styles.css"
-
 type Props = {
   content: string;
 }
