@@ -1,6 +1,5 @@
-import { getNotesInVault } from "@/lib/dynamic-mdx";
+import { getNotesInVault } from "@/lib/api";
 import { notFound } from "next/navigation";
-import { CustomMDX } from "../components/mdx";
 
 type Params = {
   params: Promise<{
@@ -21,12 +20,12 @@ export default async function NotePage({
     notFound();
   }
 
-  // const { default: Note } = await import(`@/content/${realSlug.join("/")}.md`);
+  const { default: Note, metadata } = await import(`@/content/${realSlug.join("/")}.md`);
 
   return (
     <section>
       <article className="markdown">
-        <CustomMDX source={note.content} />
+        <Note />
       </article>
     </section>
   )

@@ -9,10 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "24": "^0.0.0",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^15.5.2",
+    "@r4ai/remark-callout": "^0.6.2",
     "@tailwindcss/postcss": "^4.1.12",
     "@tailwindcss/typography": "^0.5.16",
     "@types/mdx": "^2.0.13",
@@ -23,7 +23,11 @@
     "next-mdx-remote": "^5.0.0",
     "react": "^19",
     "react-dom": "^19",
-    "sugar-high": "^0.9.3"
+    "rehype-mathjax": "^7.1.0",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
+    "remark-wikilinks": "^1.1.0"
   },
   "devDependencies": {
     "@types/node": "^24",

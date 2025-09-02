@@ -1,13 +1,13 @@
-import { getNotesInVault } from "@/lib/dynamic-mdx";
+import { getNotesInVault } from "@/lib/api";
 import Link from "next/link"
 
 export default function ContentsPage() {
-  const slugs = [...getNotesInVault().keys()]
+  const slugStrs = [...getNotesInVault().keys()]
 
   return (
     <div>
       <ul className="list-inside list-circ">
-        {slugs.map(
+        {slugStrs.map(
           (path, i) => {
             return (
               <li key={i}><Link href={path}>{path}</Link></li>
