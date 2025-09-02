@@ -1,8 +1,9 @@
 import fs from "fs";
 import matter from "gray-matter";
 import * as path from "path";
+import { VAULT_DIR } from "./constants";
 
-const vaultDirectory = path.join(process.cwd(), process.env.VAULT_DIR || "");
+const vaultDirectory = path.join(process.cwd(), VAULT_DIR);
 
 /** Collects the slugs  matching a given pattern. */
 export function* getVaultSlugs(pattern?: RegExp): IterableIterator<string[]> {
@@ -19,6 +20,17 @@ export interface Note {
   slug: string[],
   content: string,
   [k: string]: any,
+}
+
+export function filePathFromSlug(slug: string[]): string {
+  const leading = slug.slice(0, -1);
+  const end = slug.at(-1);
+  const realEnd = end?.replace(/\.md(?:#[^\)]*)?$/, "") || "";
+  const realSlug = [...leading, realEnd];
+
+  const filePath = path.join(vaultDirectory, ...slug) + ".md";
+
+  return filePath;
 }
 
 /** Get the note at a given slug. */

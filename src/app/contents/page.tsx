@@ -1,22 +1,19 @@
-import { getVaultSlugs } from "@/lib/api"
+import { getNotesInVault } from "@/lib/dynamic-mdx";
 import Link from "next/link"
 
 export default function ContentsPage() {
-
+  const slugs = [...getNotesInVault().keys()]
 
   return (
     <div>
       <ul className="list-inside list-circ">
-        {
-          [...getVaultSlugs(/\.md$/)].map(
-            (v, i) => {
-              let path = v.join("/");
-              return (
-                <li key={i}><Link href={path}>{path}</Link></li>
-              )
-            }
-          )
-        }
+        {slugs.map(
+          (path, i) => {
+            return (
+              <li key={i}><Link href={path}>{path}</Link></li>
+            )
+          }
+        )}
       </ul>
     </div>
   )
