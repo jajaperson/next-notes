@@ -3,7 +3,6 @@ import createMDX from "@next/mdx";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ["js", "jsx", "md", "ts", "tsx"],
-  transpilePackages: ['next-mdx-remote'],
 };
 
 const withMDX = createMDX({
@@ -13,6 +12,9 @@ const withMDX = createMDX({
       "remark-gfm",
       "remark-math",
       "remark-frontmatter",
+    ],
+    rehypePlugins: [
+      "rehype-raw"
     ],
     format: "md",
   },

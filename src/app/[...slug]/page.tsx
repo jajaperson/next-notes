@@ -20,7 +20,7 @@ export default async function NotePage({
     notFound();
   }
 
-  const { default: Note, metadata } = await import(`@/content/${realSlug.join("/")}.md`);
+  const { default: Note } = await import(`@/content/${realSlug.join("/")}.md`);
 
   return (
     <section>
@@ -37,4 +37,4 @@ export function generateStaticParams() {
   return slugs.map(({ slug }) => ({ slug }))
 }
 
-export const dynamicParams = false;
+export const dynamicParams = false; 
