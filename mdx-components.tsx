@@ -1,7 +1,19 @@
-import type { MDXComponents } from 'mdx/types'
+import { MDXComponents } from 'mdx/types'
+import { useMDXComponents as getNextraComponents } from 'nextra/mdx-components'
 
-const components: MDXComponents = {}
+const defaultComponents = getNextraComponents({
+  wrapper({ children }) {
+    return (
+      <>
+        <div style={{ flexGrow: 1, padding: 20 }}>{children}</div>
+      </>
+    )
+  }
+})
 
-export function useMDXComponents(): MDXComponents {
-  return components
+export function useMDXComponents(components: MDXComponents): MDXComponents {
+  return {
+    ...defaultComponents,
+    ...components,
+  }
 }
