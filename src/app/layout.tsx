@@ -15,7 +15,7 @@ const charis = Charis_SIL({
 
 export const metadata: Metadata = {
   title: "Notes",
-  description: "My linked notes",
+  description: "jaj•a•person's notes.",
 };
 
 export default function RootLayout({
