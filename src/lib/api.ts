@@ -1,46 +1,40 @@
 import fs from "fs";
+import path from "path";
+
+import { VAULT_DIR } from "./constants";
 import matter from "gray-matter";
-import * as path from "path";
 
-const vaultDirectory = path.join(process.cwd(), process.env.VAULT_DIR || "");
 
-/** Collects the slugs  matching a given pattern. */
-export function* getVaultSlugs(pattern?: RegExp): IterableIterator<string[]> {
-  for (const file of fs.readdirSync(vaultDirectory, { recursive: true })) {
-    const filePath = String(file)
-    if (typeof pattern === "undefined" || pattern?.test(filePath)) {
-      yield filePath.replace(/\.md$/, "").split(path.sep);
-    }
-  }
+/** Finds the paths for all notes in the given directory */
+function getNoteFiles(dir: string): string[] {
+  return fs.readdirSync(dir, { recursive: true }).map(String).filter((file) => path.extname(file) === ".md");
 }
+
+export type Slug = string[];
 
 /** Data from a note */
 export interface Note {
-  slug: string[],
   content: string,
+  slug: Slug,
   [k: string]: any,
 }
 
-/** Get the note at a given slug. */
-export function getNoteBySlug(slug: string[]): Note {
-  const leading = slug.slice(0, -1);
-  const end = slug.at(-1);
-  const realEnd = end?.replace(/\.md(?:#[^\)]*)?$/, "") || "";
-  const realSlug = [...leading, realEnd];
+/** Parses the frontmatter of all notes in the given directory */
+function* getNoteData(dir: string): IterableIterator<[string, Note]> {
+  const noteFiles = getNoteFiles(dir);
+  for (const file of noteFiles) {
+    const rawContent = fs.readFileSync(path.join(dir, file));
+    const { data, content } = matter(rawContent);
+    const slugStr = file.replace(/\.md$/, "")
+    const slug = slugStr.split(path.sep);
 
-  return parseFileFromSlug(realSlug);
-}
-
-/** Read the file for a note at a given slug */
-function parseFileFromSlug(slug: string[]): Note {
-  const filePath = path.join(vaultDirectory, ...slug) + ".md"
-  const fileContents = fs.readFileSync(filePath);
-  const { data, content } = matter(fileContents);
-
-  return {
-    content,
-    slug,
-    ...data
+    const note = { slug, content, ...data }
+    yield [slugStr, note]
   }
 }
 
+/** Returns note objects for all notes in the vault. */
+export function getNotesInVault(): Map<string, Note> {
+  const vaultDirectory = path.join(process.cwd(), VAULT_DIR);
+  return new Map(getNoteData(vaultDirectory));
+}

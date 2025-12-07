@@ -1,0 +1,38 @@
+.markdown {
+  @apply prose;
+
+  .QED {
+    margin-left: 2em;
+  }
+  .QED:after {
+    content: "◻️" !important;
+  }
+
+  .broad,
+  .narrow,
+  .recon,
+  .ling {
+    @apply font-ling;
+  }
+
+  .broad:before,
+  .broad:after {
+    font-family: var(--font-text-override);
+    content: "/";
+  }
+
+  .narrow:before {
+    font-family: var(--font-text-override);
+    content: "[";
+  }
+
+  .narrow:after {
+    font-family: var(--font-text-override);
+    content: "]";
+  }
+
+  .recon:before {
+    font-family: var(--font-text-override);
+    content: "*";
+  }
+}

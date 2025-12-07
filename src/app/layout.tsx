@@ -1,12 +1,21 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Charis_SIL } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter"
+});
+
+const charis = Charis_SIL({
+  subsets: ["latin", "latin-ext"],
+  weight: "400",
+  variable: "--font-charis"
+});
 
 export const metadata: Metadata = {
   title: "Notes",
-  description: "My linked notes",
+  description: "jaj•a•person's notes.",
 };
 
 export default function RootLayout({
@@ -16,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.variable} ${charis.variable}`}>{children}</body>
     </html>
   );
 }
