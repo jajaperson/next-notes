@@ -1,4 +1,5 @@
 import { getNotesInVault } from "@/lib/api";
+import { VAULT_DIR } from "@/lib/constants";
 import { notFound } from "next/navigation";
 
 type Params = {
@@ -20,7 +21,8 @@ export default async function NotePage({
     notFound();
   }
 
-  const { default: Note } = await import(`@/content/${realSlug.join("/")}.md`);
+  // Unfortunately, using anything like `path.join` does not gel well with webpack.
+  const { default: Note } = await import(`../../../${VAULT_DIR}/${realSlug.join("/")}.md`);
 
   return (
     <section>

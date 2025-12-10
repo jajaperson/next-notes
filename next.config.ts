@@ -4,9 +4,9 @@ import { Options as MathJaxOptions } from "rehype-mathjax"
 import { loadMacrosFromPreamble } from "@/lib/load-preamble";
 import { readFileSync } from "fs";
 import { MATHJAX_PREAMBLE } from "@/lib/constants";
+import { NextConfig } from "next";
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "ts", "tsx"],
 };
 
