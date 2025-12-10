@@ -19,6 +19,7 @@ const withMDX = createMDX({
       "remark-gfm",
       "remark-math",
       "remark-frontmatter",
+      "@r4ai/remark-callout",
     ],
     rehypePlugins: [
       "rehype-raw",
